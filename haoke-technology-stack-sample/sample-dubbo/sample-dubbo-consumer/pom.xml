@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.moon</groupId>
+        <artifactId>sample-dubbo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>sample-dubbo-consumer</artifactId>
+    <name>${project.artifactId}</name>
+    <packaging>jar</packaging>
+    <description>dubbo服务消费方示例工程</description>
+
+    <dependencies>
+        <!-- springboot依赖，非web项目 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 引入提供者工程的依赖（注：这里只是为了引入其接口，非实现类） -->
+        <dependency>
+            <groupId>com.moon</groupId>
+            <artifactId>sample-dubbo-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
