@@ -3,25 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>haoke-manage</artifactId>
+        <artifactId>haoke-manage-server-house-resources</artifactId>
         <groupId>com.moon</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>haoke-manage-dubbo-server</artifactId>
+    <artifactId>haoke-manage-server-house-resources-service</artifactId>
     <name>${project.artifactId}</name>
-    <modules>
-        <module>haoke-manage-server-house-resources</module>
-    </modules>
-    <packaging>pom</packaging>
-    <description>好客租房后台服务聚合工程</description>
+    <packaging>jar</packaging>
+    <description>好客租房后台服务 - 房源服务 - 接口具体实现工程</description>
 
     <dependencies>
-        <!-- 添加 spring boot 的支持 -->
+        <!-- spring boot jdbc 的支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <!-- 依赖接口工程 -->
+        <dependency>
+            <groupId>com.moon</groupId>
+            <artifactId>haoke-manage-server-house-resources-interface</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>haoke-manage-dubbo-server</artifactId>
+        <groupId>com.moon</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>haoke-manage-server-house-resources</artifactId>
+    <name>${project.artifactId}</name>
+    <packaging>pom</packaging>
+    <description>好客租房后台服务 - 房源服务聚合工程</description>
+
+    <!-- 子模块 -->
+    <modules>
+        <module>haoke-manage-server-house-resources-interface</module>
+        <module>haoke-manage-server-house-resources-service</module>
+    </modules>
+
+    <!-- 定义公共依赖 -->
+    <dependencies>
+        <!-- lombok实体工具插件，在MyBatis-plus包中依赖，不需要单独引用 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <!-- 需要注意：optional表示传递依赖中，如果需要使用，再显示引入 -->
+            <optional>true</optional>
+        </dependency>
+        <!-- MyBatis-Plus 插件的依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- mysql数据库连接驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>
