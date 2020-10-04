@@ -71,6 +71,12 @@ class AddResource extends PureComponent {
         delete values.houseType_4;
         delete values.houseType_5;
 
+        // 楼盘id
+        values.estateId = this.state.estateId;
+
+        // 处理图片
+        values.pic = [...this.state.pics].join(',');
+
         dispatch({
           type: 'house/submitHouseForm',
           payload: values,
@@ -94,7 +100,17 @@ class AddResource extends PureComponent {
   };
 
   handleFileList = obj => {
-    console.log(obj, '图片列表');
+    // 定义set集合，用于过滤重复的图片地址
+    let pics = new Set();
+    // 循环所有上传成功的图片
+    obj.forEach((v, k) => {
+      const { response } = v;
+      if (response) {
+        pics.add(response.name);
+      }
+    });
+    // 更新图片地址集合
+    this.setState({ pics });
   };
 
   constructor(props) {
@@ -103,6 +119,7 @@ class AddResource extends PureComponent {
       estateDataSource: [],
       estateAddress: '',
       estateId: '',
+      pics: [], // 图片地址数组
     };
   }
 
