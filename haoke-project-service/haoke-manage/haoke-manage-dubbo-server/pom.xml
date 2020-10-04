@@ -13,6 +13,7 @@
     <name>${project.artifactId}</name>
     <modules>
         <module>haoke-manage-server-house-resources</module>
+        <module>haoke-manage-server-generator</module>
     </modules>
     <packaging>pom</packaging>
     <description>好客租房后台服务聚合工程</description>

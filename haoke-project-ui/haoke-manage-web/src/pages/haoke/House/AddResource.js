@@ -35,7 +35,7 @@ const estateMap = new Map([
 ]);
 
 @connect(({ loading }) => ({
-  submitting: loading.effects['form/submitRegularForm'],
+  submitting: loading.effects['house/submitHouseForm'],
 }))
 @Form.create()
 class AddResource extends PureComponent {
@@ -72,7 +72,7 @@ class AddResource extends PureComponent {
         delete values.houseType_5;
 
         dispatch({
-          type: 'form/submitRegularForm',
+          type: 'house/submitHouseForm',
           payload: values,
         });
       }
@@ -160,6 +160,11 @@ class AddResource extends PureComponent {
                 defaultValue={this.state.estateAddress}
                 readOnly
               />
+            </FormItem>
+            <FormItem {...formItemLayout} label="房源标题">
+              {getFieldDecorator('title', { rules: [{ required: true, message: '此项为必填项' }] })(
+                <Input style={{ width: '100%' }} />
+              )}
             </FormItem>
             <FormItem {...formItemLayout} label="楼栋">
               <InputGroup compact>

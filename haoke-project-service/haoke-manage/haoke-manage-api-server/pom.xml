@@ -20,6 +20,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- dubbo服务接口的依赖 -->
+        <dependency>
+            <groupId>com.moon</groupId>
+            <artifactId>haoke-manage-server-house-resources-interface</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

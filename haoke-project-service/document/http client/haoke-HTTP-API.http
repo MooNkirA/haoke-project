@@ -1,0 +1,28 @@
+### 新增房源接口测试
+POST http://127.0.0.1:18080/house/resources
+Content-Type: application/json
+
+{
+  "title": "东方曼哈顿 3室2厅 16000元",
+  "buildingNum": "2",
+  "buildingUnit": "1",
+  "buildingFloorNum": "1",
+  "rent": "1111",
+  "paymentMethod": "1",
+  "rentMethod": "1",
+  "coveredArea": "2",
+  "useArea": "2",
+  "orientation": "南",
+  "decoration": "1",
+  "facilities": "1,2,3,8,9",
+  "houseDesc": "这个经纪人很懒，没写核心卖点",
+  "contact": "张三",
+  "mobile": "11111111111",
+  "time": "1",
+  "propertyCost": "11",
+  "floor": "1/2",
+  "houseType": "1室1厅1卫1厨1阳台",
+  "estateId": "1005"
+}
+
+###
