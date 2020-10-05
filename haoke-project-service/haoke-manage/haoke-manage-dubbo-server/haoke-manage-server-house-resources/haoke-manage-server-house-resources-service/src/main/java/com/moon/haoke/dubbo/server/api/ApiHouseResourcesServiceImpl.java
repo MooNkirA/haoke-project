@@ -3,6 +3,7 @@ package com.moon.haoke.dubbo.server.api;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.moon.haoke.dubbo.server.pojo.HouseResources;
 import com.moon.haoke.dubbo.server.service.HouseResourcesService;
+import com.moon.haoke.dubbo.server.vo.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -30,6 +31,19 @@ public class ApiHouseResourcesServiceImpl implements ApiHouseResourcesService {
     @Override
     public int saveHouseResources(HouseResources houseResources) {
         return houseResourcesService.saveHouseResources(houseResources);
+    }
+
+    /**
+     * 分页查询房源列表
+     *
+     * @param page           当前页
+     * @param pageSize       每页大小
+     * @param queryCondition 查询条件
+     * @return
+     */
+    @Override
+    public PageInfo<HouseResources> queryHouseResourcesList(int page, int pageSize, HouseResources queryCondition) {
+        return this.houseResourcesService.queryHouseResourcesList(page, pageSize, queryCondition);
     }
 
 }

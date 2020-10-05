@@ -25,4 +25,9 @@ Content-Type: application/json
   "estateId": "1005"
 }
 
+### 房源信息列表查询
+GET http://127.0.0.1:18080/house/resources?currentPage=1&pageSize=2
+Accept: application/json
+
 ###
+

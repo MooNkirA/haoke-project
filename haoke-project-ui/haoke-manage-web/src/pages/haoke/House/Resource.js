@@ -6,6 +6,7 @@ import StandardTable from '@/components/StandardTable';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 import styles from '../TableList.less';
+import ShowPics from './ShowPics';
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -13,6 +14,14 @@ const getValue = obj =>
   Object.keys(obj)
     .map(key => obj[key])
     .join(',');
+
+const payType = new Map([
+  [1, '付一押一'],
+  [2, '付三押一'],
+  [3, '付六押一'],
+  [4, '年付押一'],
+  [5, '其它'],
+]);
 
 /* eslint react/no-multi-comp:0 */
 @connect(({ houseResource, loading }) => ({
@@ -33,44 +42,48 @@ class Resource extends PureComponent {
   columns = [
     {
       title: '房源编号',
-      dataIndex: 'name',
+      dataIndex: 'id',
     },
     {
       title: '房源信息',
-      dataIndex: 'desc',
+      dataIndex: 'title',
     },
     {
       title: '图',
       dataIndex: 'pic',
+      render: (text, record, index) => <ShowPics pics={text} />,
     },
     {
-      title: '委托人',
-      dataIndex: 'status',
+      title: '楼栋',
+      render: (text, record, index) => {
+        const { buildingFloorNum, buildingNum, buildingUnit } = record;
+        return `${buildingFloorNum}栋${buildingNum}单元${buildingUnit}号`;
+      },
     },
     {
-      title: '委托时间',
-      dataIndex: 'updatedAt',
-      render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+      title: '支付方式',
+      render: (text, record, index) => payType.get(record.paymentMethod),
     },
     {
-      title: '咨询量',
-      dataIndex: 'status',
+      title: '户型',
+      dataIndex: 'houseType',
     },
     {
-      title: '看房量',
-      dataIndex: 'status',
+      title: '面积',
+      dataIndex: 'useArea',
+      render: (text, record, index) => `${text}平方`,
     },
     {
-      title: '状态',
-      dataIndex: 'status',
+      title: '楼层',
+      dataIndex: 'floor',
     },
     {
       title: '操作',
       render: (text, record) => (
         <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>查看详情</a>
+          <a onClick={() => this.handleUpdateModalVisible(true, record)}>查看</a>
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
+          <a href="">删除</a>
         </Fragment>
       ),
     },

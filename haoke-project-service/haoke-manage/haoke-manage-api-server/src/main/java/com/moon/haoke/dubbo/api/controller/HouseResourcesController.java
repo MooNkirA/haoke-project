@@ -1,13 +1,17 @@
 package com.moon.haoke.dubbo.api.controller;
 
 import com.moon.haoke.dubbo.api.service.HouseResourcesService;
+import com.moon.haoke.dubbo.api.vo.TableResult;
 import com.moon.haoke.dubbo.server.pojo.HouseResources;
+import javafx.scene.control.Tab;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -44,6 +48,23 @@ public class HouseResourcesController {
             e.printStackTrace();
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+    /**
+     * 查询房源分页列表
+     *
+     * @param houseResources 查询条件
+     * @param currentPage    当前页
+     * @param pageSize       每页大小
+     * @return 查询列表结果
+     */
+    @GetMapping
+    public ResponseEntity<TableResult> queryList(HouseResources houseResources,
+                                                 @RequestParam(name = "currentPage", defaultValue = "1") Integer currentPage,
+                                                 @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
+        TableResult<HouseResources> tableResult = this.houseResourcesService
+                .queryList(houseResources, currentPage, pageSize);
+        return ResponseEntity.ok(tableResult);
     }
 
 }

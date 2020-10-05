@@ -1,6 +1,7 @@
 package com.moon.haoke.dubbo.server.api;
 
 import com.moon.haoke.dubbo.server.pojo.HouseResources;
+import com.moon.haoke.dubbo.server.vo.PageInfo;
 
 /**
  * 房源模块，对外暴露的服务接口
@@ -20,4 +21,13 @@ public interface ApiHouseResourcesService {
      */
     int saveHouseResources(HouseResources houseResources);
 
+    /**
+     * 分页查询房源列表
+     *
+     * @param page           当前页
+     * @param pageSize       每页大小
+     * @param queryCondition 查询条件
+     * @return 数据查询分布结果
+     */
+    PageInfo<HouseResources> queryHouseResourcesList(int page, int pageSize, HouseResources queryCondition);
 }

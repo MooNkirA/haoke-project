@@ -2,5 +2,6 @@ import request from '@/utils/request';
 import { stringify } from 'qs';
 
 export async function queryResource(params) {
-  return request(`/haoke/resource?${stringify(params)}`);
+  const queryParams = params ? `?${stringify(params)}` : '';
+  return request(`/haoke/house/resources${queryParams}`);
 }
