@@ -21,6 +21,7 @@
     <modules>
         <module>sample-dubbo</module>
         <module>sample-mybatis-plus</module>
+        <module>sample-graphql-java</module>
     </modules>
 
 </project>
